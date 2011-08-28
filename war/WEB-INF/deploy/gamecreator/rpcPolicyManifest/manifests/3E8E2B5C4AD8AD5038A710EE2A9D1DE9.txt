@@ -1,2 +1,0 @@
-serviceClass: com.evolup.GameCreator.client.GreetingService
-path: E85275CC64EB1CB25EBD28C7F8C4656C.gwt.rpc
