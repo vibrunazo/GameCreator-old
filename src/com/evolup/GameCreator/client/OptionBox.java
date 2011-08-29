@@ -8,8 +8,11 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class OptionBox extends Composite {
+	private Button button;
 
 	public OptionBox() {
 		
@@ -51,9 +54,19 @@ public class OptionBox extends Composite {
 		horizontalPanel_1.add(textBox_1);
 		textBox_1.setWidth("200px");
 		
-		Button button = new Button("X");
+		button = new Button("X");
+		button.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				PressX();
+			}
+		});
 		absolutePanel.add(button, 325, 37);
 		button.setSize("25px", "29px");
+	}
+
+	protected void PressX() {
+		this.removeFromParent();
+		
 	}
 
 }
