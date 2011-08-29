@@ -2,6 +2,7 @@ package com.evolup.GameCreator.client;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -10,9 +11,12 @@ import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.SuggestBox;
 
 public class OptionBox extends Composite {
 	private Button button;
+	SuggestBox typeBox;// = new SuggestBox();
+	SuggestBox valueBox = new SuggestBox();
 
 	public OptionBox() {
 		
@@ -36,11 +40,16 @@ public class OptionBox extends Composite {
 		horizontalPanel.add(label);
 		label.setWidth("50px");
 		
-		TextBox textBox = new TextBox();
-		textBox.setText("type");
-		horizontalPanel.add(textBox);
-		textBox.setWidth("200px");
-		
+		MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();  
+		oracle.add("Game Type");
+		oracle.add("Character");
+		oracle.add("Map");
+		oracle.add("Theme");
+
+		SuggestBox typeBox = new SuggestBox(oracle);
+		horizontalPanel.add(typeBox);
+		typeBox.setWidth("200px");
+
 		HorizontalPanel horizontalPanel_1 = new HorizontalPanel();
 		verticalPanel.add(horizontalPanel_1);
 		horizontalPanel_1.setSize("100%", "100%");
@@ -49,10 +58,9 @@ public class OptionBox extends Composite {
 		horizontalPanel_1.add(label_1);
 		label_1.setWidth("50px");
 		
-		TextBox textBox_1 = new TextBox();
-		textBox_1.setText("Value");
-		horizontalPanel_1.add(textBox_1);
-		textBox_1.setWidth("200px");
+		
+		horizontalPanel_1.add(valueBox);
+		valueBox.setWidth("200px");
 		
 		button = new Button("X");
 		button.addClickHandler(new ClickHandler() {
@@ -68,5 +76,9 @@ public class OptionBox extends Composite {
 		this.removeFromParent();
 		
 	}
-
+	
+	public void AddType(String type) {
+		typeBox.getSuggestOracle();
+		
+	}
 }
